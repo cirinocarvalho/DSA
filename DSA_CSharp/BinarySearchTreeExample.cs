@@ -111,7 +111,7 @@ namespace DSA
         {
             if (Search(data))
             {
-                DeleteHelper(root, data);
+                root = DeleteHelper(root, data);
             }
             else
             {
