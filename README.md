@@ -113,7 +113,7 @@ g++ -std=c++17 -o dsa_cpp *.cpp
 | Binary Search Tree | `BinarySearchTreeExample.cs` | `BinarySearchTreeExample.h/.cpp` | Ordered binary tree with insert/search/delete |
 | Graph | `Graph.cs` | `Graph.h/.cpp` | Graph type shared by the traversal examples |
 | — Adjacency Matrix | `AdjacencyMatrixExample.cs` | `AdjacencyMatrixExample.h/.cpp` | Matrix-based graph representation |
-| — Adjacency List | `AdjacenyListExample.cs` | `AdjacencyListExample.h/.cpp` | List-based graph representation |
+| — Adjacency List | `AdjacencyListExample.cs` | `AdjacencyListExample.h/.cpp` | List-based graph representation |
 | Hash Table | `HashTablesExample.cs` | `HashTablesExample.h/.cpp` | Key-value storage with hashing |
 | Node | `Node.cs` | `Node.h/.cpp` | Generic node used by lists, trees, and graphs |
 
@@ -241,7 +241,6 @@ This project helps understand:
 - Each example is self-contained and can be run independently
 - The code includes comments explaining the logic and complexity
 - Comparing the same algorithm in both languages is the point — read them side by side
-- Note the historical filename typo `AdjacenyListExample.cs` on the C# side (the C++ counterpart is spelled `AdjacencyListExample`)
 
 ## 🤝 Contributing
 
