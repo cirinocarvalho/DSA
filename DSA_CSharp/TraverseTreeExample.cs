@@ -30,7 +30,7 @@ namespace DSA
 
         }
 
-        private void PreOrder(Nodes root)
+        private void PreOrder(Nodes? root)
         {
             if (root == null) return;
             Console.WriteLine(root.data + " ");
@@ -38,14 +38,14 @@ namespace DSA
             PreOrder(root.right);
         }
 
-        private void InOrder(Nodes root)
+        private void InOrder(Nodes? root)
         {
             if (root == null) return;
             InOrder(root.left);
             Console.WriteLine(root.data + " ");
             InOrder(root.right);
         }
-        private void PostOrder(Nodes root)
+        private void PostOrder(Nodes? root)
         {
             if (root == null) return;
             PostOrder(root.left);
@@ -53,7 +53,7 @@ namespace DSA
             Console.WriteLine(root.data + " ");
         }
 
-        private void LevelOrder(Nodes root)
+        private void LevelOrder(Nodes? root)
         {
             if (root == null) return;
             Queue<Nodes> queue = new Queue<Nodes>();

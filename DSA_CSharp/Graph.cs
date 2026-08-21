@@ -39,12 +39,23 @@ namespace DSA
 
         }
 
+        // The head of each adjacency list is the vertex itself, added by AddNode.
+        private Node HeadOf(int index)
+        {
+            LinkedListNode<Node>? head = adjList[index].First;
+            if (head is null)
+            {
+                throw new InvalidOperationException($"Vertex {index} has no adjacency list. Call AddNode first.");
+            }
+            return head.Value;
+        }
+
         public void AddEdge(int src, int dst)
         {
             if (graphType == GraphType.AdjacencyList)
             {
                 LinkedList<Node> currentList = adjList[src];
-                Node dstNode = adjList[dst].First.Value;
+                Node dstNode = HeadOf(dst);
                 currentList.AddLast(dstNode);
             }
             else if (graphType == GraphType.AdjacencyMatrix)
@@ -58,7 +69,7 @@ namespace DSA
             if (graphType == GraphType.AdjacencyList)
             {
                 LinkedList<Node> currentList = adjList[src];
-                Node dstNode = adjList[dst].First.Value;
+                Node dstNode = HeadOf(dst);
                 foreach (var item in currentList)
                 {
                     if (item == dstNode)

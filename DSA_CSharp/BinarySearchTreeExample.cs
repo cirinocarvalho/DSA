@@ -35,8 +35,8 @@ namespace DSA
     internal class Nodes
     {
         public int data;
-        public Nodes left;
-        public Nodes right;
+        public Nodes? left;
+        public Nodes? right;
 
         public Nodes(int data)
         {
@@ -46,13 +46,13 @@ namespace DSA
 
     internal class BinarySearchTree
     {
-        public Nodes root;
+        public Nodes? root;
 
         public void Insert(Nodes node)
         {
             root = InsertHelper(root, node);
         }
-        private Nodes InsertHelper(Nodes root, Nodes node)
+        private Nodes InsertHelper(Nodes? root, Nodes node)
         {
             int data = node.data;
             if (root == null)
@@ -75,7 +75,7 @@ namespace DSA
         {
             displayHelper(root);
         }
-        private void displayHelper(Nodes root)
+        private void displayHelper(Nodes? root)
         {
             if (root != null)
             {
@@ -88,7 +88,7 @@ namespace DSA
         {
             return SearchHelper(root, data);
         }
-        private bool SearchHelper(Nodes root, int data)
+        private bool SearchHelper(Nodes? root, int data)
         {
             if (root == null)
             {
@@ -118,7 +118,7 @@ namespace DSA
                 Console.WriteLine($"Value {data} not found in the tree.");
             }
         }
-        private Nodes DeleteHelper(Nodes root, int data)
+        private Nodes? DeleteHelper(Nodes? root, int data)
         {
             if (root == null)
             {
@@ -140,12 +140,12 @@ namespace DSA
                 {
                     root = null;
                 }
-                else if (root.right == null)
+                else if (root.right == null)   // only a left child - find predecessor
                 {
-                    root.data = Sucessor(root);
-                    root.right = DeleteHelper(root.right, root.data);
+                    root.data = Predecessor(root);
+                    root.left = DeleteHelper(root.left, root.data);
                 }
-                else if (root.left == null)    //find successor
+                else if (root.left == null)    // only a right child - find successor
                 {
                     root.data = Sucessor(root);
                     root.right = DeleteHelper(root.right, root.data);
@@ -162,23 +162,25 @@ namespace DSA
         // Find the minimum value in the right subtree
         private int Sucessor(Nodes root)
         {
-            root = root.right;
-            while (root.left != null)
+            Nodes current = root.right
+                ?? throw new InvalidOperationException("Sucessor requires a right subtree.");
+            while (current.left != null)
             {
-                root = root.left;
+                current = current.left;
             }
-            return root.data;
+            return current.data;
         }
 
         // Find the maximum value in the left subtree
         private int Predecessor(Nodes root)
         {
-            root = root.left;
-            while (root.right != null)
+            Nodes current = root.left
+                ?? throw new InvalidOperationException("Predecessor requires a left subtree.");
+            while (current.right != null)
             {
-                root = root.right;
+                current = current.right;
             }
-            return root.data;
+            return current.data;
         }
 
     }
