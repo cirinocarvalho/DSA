@@ -37,3 +37,8 @@ DSA_CSharp/.idea/*
 DSA_CSharp/.Rider/*
 DSA_CSharp/.vscode/*
 DSA_CSharp/.DS_Store
+DSA_CPP/*.o
+.github/*
+
+DSA_CPP/dsa_cpp
+DSA_CPP/.idea/
